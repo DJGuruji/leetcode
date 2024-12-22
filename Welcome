@@ -1,0 +1,237 @@
+## 1) Stack
+
+stack = []  # Using list as a stack
+stack.append(1)  # Push
+stack.append(2)
+stack.pop()  # Pop
+
+
+## 2) Queue
+
+from collections import deque
+
+queue = deque()
+queue.append(1)  # Enqueue
+queue.append(2)
+queue.popleft()  # Dequeue
+
+
+## 3) LinkedList
+
+from collections import deque
+
+class LinkedList:
+    def __init__(self):
+        """Initialize an empty linked list."""
+        self.linked_list = deque()
+
+    # Insert Operations
+    def insert_first(self, value):
+        """Insert at the beginning."""
+        self.linked_list.appendleft(value)
+
+    def insert_last(self, value):
+        """Insert at the end."""
+        self.linked_list.append(value)
+
+    def insert_at_index(self, index, value):
+        """Insert at a specific index."""
+        if index < 0 or index > len(self.linked_list):
+            raise IndexError("Index out of bounds")
+        temp_list = list(self.linked_list)
+        temp_list.insert(index, value)
+        self.linked_list = deque(temp_list)
+
+    # Remove Operations
+    def remove_first(self):
+        """Remove the first element."""
+        if not self.linked_list:
+            raise IndexError("Cannot remove from an empty list")
+        return self.linked_list.popleft()
+
+    def remove_last(self):
+        """Remove the last element."""
+        if not self.linked_list:
+            raise IndexError("Cannot remove from an empty list")
+        return self.linked_list.pop()
+
+    def remove_at_index(self, index):
+        """Remove an element at a specific index."""
+        if index < 0 or index >= len(self.linked_list):
+            raise IndexError("Index out of bounds")
+        temp_list = list(self.linked_list)
+        removed = temp_list.pop(index)
+        self.linked_list = deque(temp_list)
+        return removed
+
+    def remove_by_value(self, value):
+        """Remove the first occurrence of a value."""
+        try:
+            self.linked_list.remove(value)
+        except ValueError:
+            raise ValueError(f"Value {value} not found in the linked list")
+
+    # Display
+    def display(self):
+        """Display the linked list."""
+        print("LinkedList:", list(self.linked_list))
+
+
+# Usage Example
+if __name__ == "__main__":
+    ll = LinkedList()
+
+    # Insertions
+    ll.insert_first(10)
+    ll.insert_last(20)
+    ll.insert_last(30)
+    ll.insert_at_index(1, 15)  # Insert 15 at index 1
+    ll.display()  # LinkedList: [10, 15, 20, 30]
+
+    # Removals
+    ll.remove_first()  # Removes 10
+    ll.display()  # LinkedList: [15, 20, 30]
+
+    ll.remove_last()  # Removes 30
+    ll.display()  # LinkedList: [15, 20]
+
+    ll.remove_at_index(0)  # Removes element at index 0 (15)
+    ll.display()  # LinkedList: [20]
+
+    ll.insert_last(40)
+    ll.insert_last(50)
+    ll.remove_by_value(40)  # Removes the value 40
+    ll.display()  # LinkedList: [20, 50]
+
+
+
+## 4) Set
+
+my_set = {1, 2, 3}
+my_set.add(4)  # Add an element
+my_set.remove(2)  # Remove an element
+
+
+## 5) ArrayList
+
+array_list = [1, 2, 3]
+array_list.append(4)  # Add
+array_list.remove(2)  # Remove
+
+
+## 6) Array
+
+# Predefined array
+array1 = [5, 3, 8, 1, 9]
+
+# Array with user input
+n = int(input("Enter the number of elements for the second array: "))
+array2 = []
+for i in range(n):
+    value = int(input(f"Enter value {i + 1}: "))
+    array2.append(value)
+
+# Print the arrays
+print("\nOriginal Arrays:")
+print("Array 1:", array1)
+print("Array 2:", array2)
+
+# Ascending order
+array1_asc = sorted(array1)
+array2_asc = sorted(array2)
+
+print("\nArrays in Ascending Order:")
+print("Array 1:", array1_asc)
+print("Array 2:", array2_asc)
+
+# Descending order
+array1_desc = sorted(array1, reverse=True)
+array2_desc = sorted(array2, reverse=True)
+
+print("\nArrays in Descending Order:")
+print("Array 1:", array1_desc)
+print("Array 2:", array2_desc)
+
+# Reverse order (order of insertion reversed)
+array1_rev = list(reversed(array1))
+array2_rev = list(reversed(array2))
+
+print("\nArrays in Reverse Order:")
+print("Array 1:", array1_rev)
+print("Array 2:", array2_rev)
+
+
+
+## 7) String handling Function
+
+# Example string
+text = "  Hello World! Welcome to Python Programming.  "
+
+# Basic String Operations
+print("Original String:", text)
+print("Length of String:", len(text))
+print("Uppercase:", text.upper())
+print("Lowercase:", text.lower())
+print("Capitalize:", text.capitalize())
+print("Title Case:", text.title())
+print("Swap Case:", text.swapcase())
+
+# Whitespace Handling
+print("\nWhitespace Handling:")
+print("Strip:", text.strip())
+print("Left Strip:", text.lstrip())
+print("Right Strip:", text.rstrip())
+
+# Search and Replace
+print("\nSearch and Replace:")
+print("Find 'World':", text.find("World"))
+print("Replace 'World' with 'Everyone':", text.replace("World", "Everyone"))
+
+# Split and Join
+print("\nSplit and Join:")
+words = text.split()
+print("Split into Words:", words)
+joined = " ".join(words)
+print("Joined Words:", joined)
+
+# String Checks
+print("\nString Checks:")
+print("Starts with '  Hello':", text.startswith("  Hello"))
+print("Ends with 'Programming.  ':", text.endswith("Programming.  "))
+print("Is Alphabetic:", text.strip().isalpha())  # False, as it contains spaces and special characters
+print("Is Digit:", "123".isdigit())
+print("Is Alphanumeric:", "Hello123".isalnum())
+print("Is Lowercase:", "hello".islower())
+print("Is Uppercase:", "HELLO".isupper())
+print("Is Title Case:", "Hello World".istitle())
+
+# Padding and Formatting
+print("\nPadding and Formatting:")
+print("Centered:", text.center(50, "-"))
+print("Left Justified:", text.ljust(50, "-"))
+print("Right Justified:", text.rjust(50, "-"))
+print("Zero Filled:", "123".zfill(5))
+
+# Character Encoding
+print("\nCharacter Encoding:")
+encoded = text.encode()
+print("Encoded String:", encoded)
+decoded = encoded.decode()
+print("Decoded String:", decoded)
+
+# Other Useful Functions
+print("\nOther Useful Functions:")
+print("Count 'o':", text.count("o"))
+print("Partition by 'World':", text.partition("World"))
+print("Reverse Partition by 'World':", text.rpartition("World"))
+
+
+
+# Char to ascii
+
+ascii = ord(char)
+
+# ascii to char
+
+char = chr(ascii)
+
