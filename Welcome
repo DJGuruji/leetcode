@@ -4,6 +4,7 @@ stack = []  # Using list as a stack
 stack.append(1)  # Push
 stack.append(2)
 stack.pop()  # Pop
+stack.remove(2) # remove by value
 
 
 ## 2) Queue
